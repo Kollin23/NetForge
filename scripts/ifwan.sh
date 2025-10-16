@@ -1,12 +1,12 @@
 #!/bin/bash
 
-source /usr/local/JSBach/conf/ifwan.txt
+source /usr/local/NetForge/conf/ifwan.txt
 
 ######################################################################
-###  Funcions
+###  Funciones
 ######################################################################
 
-fnc_iniciar()
+fn_iniciar()
 {
 	if [ "$MODE" == "dhcp" ]; then
 		dhcpcd $IFWAN
@@ -14,7 +14,7 @@ fnc_iniciar()
 	
 }
 
-fnc_aturar()
+fn_parar()
 {
 	if [ "$MODE" == "dhcp" ]; then
 		dhcpcd -k $IFWAN
@@ -22,29 +22,29 @@ fnc_aturar()
 }
 
 
-fnc_configurar()
+fn_configurar()
 {	
 
-	#primer argumet dhcp o manual
+	#Primer argumeto dhcp o manual
 	if [ $# -lt 1 ]; then
-	 	echo "falta mode [dhcp,manual]"	
+	 	echo "Falta MODE [dhcp,manual]"	
 	 	exit 1
 	fi
 	
-	fitxer="/usr/local/JSBach/conf/ifwan.txt"  # El nom del fitxer on vols fer la modificació
+	archivo="/usr/local/NetForge/conf/ifwan.txt"  # El nombre del archivo a modificar
 
 	
-	sed -i 's/^MODE=.*/MODE='$1'/' "$fitxer"
+	sed -i 's/^MODE=.*/MODE='$1'/' "$archivo"
 	
 	shift
 	
-	#primer argumet dhcp o manual
+	#Segundo argumeto nombre tarjeta
 	if [ $# -lt 1 ]; then
-	 	echo "falta nom targeta p.e enp1s0"	
+	 	echo "Falta nombre de la tarjeta p.e enp1s0"	
 	 	exit 1
 	fi
 	
-	sed -i 's/^IFWAN=.*/IFWAN='$1'/' "$fitxer"
+	sed -i 's/^IFWAN=.*/IFWAN='$1'/' "$archivo"
 	
 	
 }
@@ -55,9 +55,9 @@ fnc_configurar()
 ###  MAIN
 ######################################################################
 
-MSG="Ús: inicar, aturar, configurar ,estat"
+MSG="DISCLAIMER: inicar, parar, configurar, estado"
 
-# Comprovem que hi hagi almenys un argument (la opció)
+# Comprobamos que al menos hay un argumento
 if [ $# -lt 1 ]; then
   echo "$MSG"
   exit 1
@@ -66,16 +66,16 @@ fi
 OPCIO_1=$1
 shift
 
-# Fem switch per executar la funció que toca
+# Hacemos switch para ejecutar la función que toca
 case "$OPCIO_1" in
   iniciar)
-    fnc_iniciar  $@
+    fn_iniciar $@
     ;;
-  aturar)
-    fnc_aturar	$@
+  parar)
+    fn_parar $@
     ;; 
   configurar) 
-    fnc_configurar $@
+    fn_configurar $@
     ;;
   *)
     echo "$MSG"
