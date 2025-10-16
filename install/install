@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+
+###
+### desactivar NetworkManager
+###
+echo "desactivant NetworkManager"
+
+systemctl stop NetworkManager
+systemctl disable NetworkManager
+echo 
+
+

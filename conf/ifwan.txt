@@ -1,0 +1,6 @@
+IFWAN=enp3s0
+MODE=dhcp
+IP=
+MASC=
+PE=
+S_DNS=

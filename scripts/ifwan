@@ -1,0 +1,85 @@
+#!/bin/bash
+
+source /usr/local/JSBach/conf/ifwan.txt
+
+######################################################################
+###  Funcions
+######################################################################
+
+fnc_iniciar()
+{
+	if [ "$MODE" == "dhcp" ]; then
+		dhcpcd $IFWAN
+	fi
+	
+}
+
+fnc_aturar()
+{
+	if [ "$MODE" == "dhcp" ]; then
+		dhcpcd -k $IFWAN
+	fi 
+}
+
+
+fnc_configurar()
+{	
+
+	#primer argumet dhcp o manual
+	if [ $# -lt 1 ]; then
+	 	echo "falta mode [dhcp,manual]"	
+	 	exit 1
+	fi
+	
+	fitxer="/usr/local/JSBach/conf/ifwan.txt"  # El nom del fitxer on vols fer la modificació
+
+	
+	sed -i 's/^MODE=.*/MODE='$1'/' "$fitxer"
+	
+	shift
+	
+	#primer argumet dhcp o manual
+	if [ $# -lt 1 ]; then
+	 	echo "falta nom targeta p.e enp1s0"	
+	 	exit 1
+	fi
+	
+	sed -i 's/^IFWAN=.*/IFWAN='$1'/' "$fitxer"
+	
+	
+}
+
+
+
+######################################################################
+###  MAIN
+######################################################################
+
+MSG="Ús: inicar, aturar, configurar ,estat"
+
+# Comprovem que hi hagi almenys un argument (la opció)
+if [ $# -lt 1 ]; then
+  echo "$MSG"
+  exit 1
+fi
+
+OPCIO_1=$1
+shift
+
+# Fem switch per executar la funció que toca
+case "$OPCIO_1" in
+  iniciar)
+    fnc_iniciar  $@
+    ;;
+  aturar)
+    fnc_aturar	$@
+    ;; 
+  configurar) 
+    fnc_configurar $@
+    ;;
+  *)
+    echo "$MSG"
+    ;;
+esac
+
+
