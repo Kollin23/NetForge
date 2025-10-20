@@ -35,7 +35,7 @@ fn_iniciar() {
 }
 
 fn_parar() {
-  if [ "$(fn_estado)" == "No conectado a Internet" ]; then
+  if [ "$MODE" = "dhcp" ] && [ "$(fn_estado)" == "No conectado a Internet" ]; then
     echo "La interfaz ya está parada"
     exit 1
   fi
