@@ -15,6 +15,8 @@ fn_iniciar()
     ;;
   "manual")
     echo ip a a $IP/$MASK dev $IFWAN
+    echo ip l s dev $IFWAN up
+    echo ip r a default via $PE
     ;; 
   *)
     echo "$MSG"
