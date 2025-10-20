@@ -6,28 +6,33 @@ source /usr/local/NetForge/conf/ifwan.conf
 ###  Funciones
 ######################################################################
 
-fn_iniciar() {
+fn_iniciar() 
+{
   echo "Iniciar"
+  echo 1 > /proc/sys/net/ipv4/ip_forward
+  iptables -t nat -A POSTROUTING -o $IFWAN -j MASQUERADE
 }
 
-fn_parar() {
+fn_parar() 
+{
   echo "Parar"
-}
-
-fn_configurar() {
-  echo "Configurar"
+  echo 0 > /proc/sys/net/ipv4/ip_forward
+  iptables -t nat -D POSTROUTING -o $IFWAN -j MASQUERADE
 }
 
 fn_estado() {
-  echo "Conectado a Internet"
-  echo "No conectado a Internet"
+  if [ "$(cat /proc/sys/net/ipv4/ip_forward)" -eq 1 ] && iptables -t nat -C POSTROUTING -o "$IFWAN" -j MASQUERADE 2>/dev/null; then
+    echo "ACTIVADO"
+  else
+    echo "No ACTIVADO"
+  fi
 }
 
 ######################################################################
 ###  MAIN
 ######################################################################
 
-MSG="DISCLAIMER: iniciar, parar, configurar, estado"
+MSG="DISCLAIMER: iniciar, parar, estado"
 
 # Comprobamos que al menos hay un argumento
 if [ $# -lt 1 ]; then
