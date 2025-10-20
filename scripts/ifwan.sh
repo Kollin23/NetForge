@@ -8,10 +8,18 @@ source /usr/local/NetForge/conf/ifwan.txt
 
 fn_iniciar()
 {
-	if [ "$MODE" == "dhcp" ]; then
-		dhcpcd $IFWAN
-	fi
 	
+  case "$MODE" in
+  "dhcp")
+    dhcpcd $IFWAN
+    ;;
+  "manual")
+    echo ip a a $IP/$MASK dev $IFWAN
+    ;; 
+  *)
+    echo "$MSG"
+    ;;
+esac
 }
 
 fn_parar()
@@ -25,28 +33,14 @@ fn_parar()
 fn_configurar()
 {	
 
-	#Primer argumeto dhcp o manual
-	if [ $# -lt 1 ]; then
-	 	echo "Falta MODE [dhcp,manual]"	
-	 	exit 1
-	fi
-	
-	archivo="/usr/local/NetForge/conf/ifwan.txt"  # El nombre del archivo a modificar
-
-	
-	sed -i 's/^MODE=.*/MODE='$1'/' "$archivo"
-	
-	shift
-	
-	#Segundo argumeto nombre tarjeta
-	if [ $# -lt 1 ]; then
-	 	echo "Falta nombre de la tarjeta p.e enp1s0"	
-	 	exit 1
-	fi
-	
-	sed -i 's/^IFWAN=.*/IFWAN='$1'/' "$archivo"
-	
-	
+	(
+  echo MODE=$1
+	echo IFWAN=$2
+	echo IP=$(echo $3 | cut -d'/' -f1)
+	echo MASK=$(echo $3 | cut -d'/' -f2)
+	echo PE=$4
+	echo S_DNS=$5
+  ) > /usr/local/NetForge/conf/ifwan.txt
 }
 
 

@@ -1,6 +1,6 @@
-IFWAN=enp3s0
+IFWAN=enp5s0
 MODE=dhcp
 IP=
-MASC=
+MASK=
 PE=
 S_DNS=
