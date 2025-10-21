@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "Content-type: text/html"
+echo ""
+echo "<html>"
+echo "<head><title>Modelo CGI</title></head>"
+echo "<body>"
+echo "<h1>Modelo CGI Ejecutado</h1>"
+echo "<p>Este es un ejemplo de un script CGI en Bash.</p>"
+echo "</body>"
+echo "</html>"
