@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Content-type: text/html"
+echo "Content-type: text/html; charset=UTF-8"
 echo ""
 echo "<html>"
 echo "<head><title>Modelo CGI</title></head>"
