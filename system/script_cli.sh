@@ -6,7 +6,7 @@ SCRIPTS_DIR="/usr/local/NetForge/scripts"
 # Bucle infinito hasta que el usuario escriba "exit"
 while true; do
   # Leer la entrada del usuario
-  echo "cli>"
+  echo -n "cli> "
   read input
 
   # Si el usuario ingresa "exit", salimos del bucle
@@ -17,7 +17,7 @@ while true; do
 
   # Si el usuario ingresa "?", mostramos la ayuda
   if [ "$input" == "?" ]; then
-    echo "Lista de scripts disponibles en '$SCRIPTS_DIR':"
+    echo "Scripts disponibles en $SCRIPTS_DIR:"
     ls "$SCRIPTS_DIR"
     continue
   fi
