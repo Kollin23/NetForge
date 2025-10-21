@@ -6,12 +6,20 @@ SCRIPTS_DIR="/usr/local/NetForge/scripts"
 # Bucle infinito hasta que el usuario escriba "exit"
 while true; do
   # Leer la entrada del usuario
-  read -p "cli> " input
+  echo "cli>"
+  read input
 
   # Si el usuario ingresa "exit", salimos del bucle
   if [ "$input" == "exit" ]; then
     echo "Saliendo..."
     break
+  fi
+
+  # Si el usuario ingresa "?", mostramos la ayuda
+  if [ "$input" == "?" ]; then
+    echo "Lista de scripts disponibles en '$SCRIPTS_DIR':"
+    ls "$SCRIPTS_DIR"
+    continue
   fi
 
   # Verificar que el primer parámetro no esté vacío
@@ -24,21 +32,18 @@ while true; do
   script=$(echo "$input" | awk '{print $1}')
   arguments=$(echo "$input" | cut -d' ' -f2-)
 
-  # Verificar que el script esté dentro de la carpeta SCRIPTS_DIR
-  if [[ "$script" != "$SCRIPTS_DIR/"* ]]; then
-    echo "Error: El script '$script' no está dentro de la carpeta '$SCRIPTS_DIR'."
-    continue
-  fi
+  # Construir la ruta completa del script
+  script_path="$SCRIPTS_DIR/$script"
 
   # Verificar si el archivo existe y es ejecutable
-  if [ ! -f "$script" ]; then
-    echo "Error: El script '$script' no existe."
+  if [ ! -f "$script_path" ]; then
+    echo "Error: El script '$script' no existe en '$SCRIPTS_DIR'."
     continue
-  elif [ ! -x "$script" ]; then
+  elif [ ! -x "$script_path" ]; then
     echo "Error: El script '$script' no es ejecutable."
     continue
   fi
 
   # Ejecutar el script con los argumentos restantes
-  "$script" $arguments
+  "$script_path" $arguments
 done
