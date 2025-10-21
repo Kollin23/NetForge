@@ -5,13 +5,10 @@ echo ""
 <html>
 <head><title>Modelo CGI</title></head>
 <body>
-<h1>Modelo CGI Ejecutado</h1>
-<p>Este es un ejemplo de un script CGI en Bash.</p>
+<h1>IFWAN</h1>
 EOM
 
-echo "<b>"
-ls -l
-echo "</b>"
+/usr/local/NetForge/scripts/ifwan.sh estado
 
 /bin/cat << EOM
 </body>
