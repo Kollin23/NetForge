@@ -8,7 +8,13 @@ echo ""
 <h1>IFWAN</h1>
 EOM
 
-/usr/local/NetForge/scripts/ifwan.sh estado
+while IFS = read -r line; do
+    if [[$line == "exit"]]; then
+        break
+    fi
+    echo "<pre>$line</pre>"
+done < <((echo "enrutar iniciar") | nc 127.0.0.1 1234)
+
 
 /bin/cat << EOM
 </body>
