@@ -1,5 +1,7 @@
 #!/bin/bash
 
+apt update
+apt upgrade -y
 apt install net-tools
 apt install -y apache2
 
