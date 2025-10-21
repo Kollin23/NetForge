@@ -5,8 +5,9 @@
 #################################################################################
 apt update
 apt upgrade -y
-apt install net-tools
 apt install -y apache2
+
+apt install net-tools
 
 #################################################################################
 ### Desactivar NetworkManager
