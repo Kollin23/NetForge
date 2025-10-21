@@ -11,4 +11,6 @@ cat <<EOF
 </html>
 EOF
 
+echo "<b>"
 ls -l
+echo "</b>"
