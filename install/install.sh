@@ -1,6 +1,7 @@
 #!/bin/bash
 
 apt install net-tools
+apt install -y apache2
 
 #################################################################################
 ### Desactivar NetworkManager
