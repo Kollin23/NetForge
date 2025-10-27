@@ -1,37 +1,41 @@
 #!/bin/bash
 
-# Definir la carpeta donde deben estar los scripts
 SCRIPTS_DIR="/usr/local/NetForge/scripts"
 
-# Bucle infinito hasta que el usuario escriba "exit"
+# Bucle para recibir comandos desde la entrada
 while true; do
-  # Leer la entrada del usuario
-  read -p "cli> " input
+    echo -n "cli> "
 
-  # Si el usuario ingresa "exit", salimos del bucle
+  # Leer línea completa de la entrada, preservando caracteres especiales y evitando word-splitting
+  if ! IFS= read -r input; then
+    echo "Error de lectura o EOF - saliendo..."
+    break
+  fi
+
+  # Comando de salida
   if [ "$input" == "exit" ]; then
     echo "Saliendo..."
     break
   fi
 
-  # Si el usuario ingresa "?", mostramos la ayuda
+  # Comando de ayuda
   if [ "$input" == "?" ]; then
     echo "Scripts disponibles en $SCRIPTS_DIR:"
     ls "$SCRIPTS_DIR"
     continue
   fi
 
-  # Verificar que el primer parámetro no esté vacío
+  # Verificar que se ha introducido un script
   if [ -z "$input" ]; then
     echo "Error: no se proporcionó un script. Intente de nuevo."
     continue
   fi
 
-  # Separar el primer parámetro (el script) y los argumentos
+  # Separar el nombre del script y los argumentos
+  # Usamos 'read' para dividir correctamente la línea de entrada en el script y sus argumentos
   script=$(echo "$input" | awk '{print $1}')
-  arguments=$(echo "$input" | cut -d' ' -f2-)
+  arguments=$(echo "$input" | sed 's/^[^ ]* //')
 
-  # Construir la ruta completa del script
   script_path="$SCRIPTS_DIR/$script"
 
   # Verificar si el archivo existe y es ejecutable
@@ -43,6 +47,6 @@ while true; do
     continue
   fi
 
-  # Ejecutar el script con los argumentos restantes
+  # Ejecutar el script con los argumentos, manejando adecuadamente los espacios
   "$script_path" $arguments
 done
