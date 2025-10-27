@@ -4,7 +4,7 @@ SCRIPTS_DIR="/usr/local/NetForge/scripts"
 
 # Bucle para recibir comandos desde la entrada
 while true; do
-    echo -n "cli> "
+  echo -n "cli> "
 
   # Leer línea completa de la entrada, preservando caracteres especiales y evitando word-splitting
   if ! IFS= read -r input; then
