@@ -6,8 +6,7 @@ SCRIPTS_DIR="/usr/local/NetForge/scripts"
 # Bucle infinito hasta que el usuario escriba "exit"
 while true; do
   # Leer la entrada del usuario
-  echo -n "cli> "
-  read input
+  read -p "cli> " input
 
   # Si el usuario ingresa "exit", salimos del bucle
   if [ "$input" == "exit" ]; then
