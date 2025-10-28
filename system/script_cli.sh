@@ -7,10 +7,14 @@ while true; do
   echo -n "cli> "
 
   # Leer línea completa de la entrada, preservando caracteres especiales y evitando word-splitting
+  # Usamos 'read -r' para evitar que el shell haga splitting o interpretación especial de la entrada
   if ! IFS= read -r input; then
     echo "Error de lectura o EOF - saliendo..."
     break
   fi
+
+  # Eliminar espacios y saltos de línea extras (tratamos de eliminar lo que no necesitamos)
+  input=$(echo "$input" | sed 's/[[:space:]]*$//')  # Elimina los espacios al final
 
   # Comando de salida
   if [ "$input" == "exit" ]; then
@@ -32,13 +36,12 @@ while true; do
   fi
 
   # Separar el nombre del script y los argumentos
-  # Usamos 'read' para dividir correctamente la línea de entrada en el script y sus argumentos
+  # Usamos 'awk' para extraer el nombre del script y 'sed' para los argumentos
   script=$(echo "$input" | awk '{print $1}')
   arguments=$(echo "$input" | sed 's/^[^ ]* //')
 
+  # Verificar si el archivo del script existe
   script_path="$SCRIPTS_DIR/$script"
-
-  # Verificar si el archivo existe y es ejecutable
   if [ ! -f "$script_path" ]; then
     echo "Error: El script '$script' no existe en '$SCRIPTS_DIR'."
     continue
