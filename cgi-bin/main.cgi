@@ -6,7 +6,7 @@
 <head>
 
 EOM
-echo '<title>Administracio de '$HOSTNAME'</title>'
+echo '<title>Administracion de '$HOSTNAME'</title>'
 /bin/cat << EOM
 
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">

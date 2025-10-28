@@ -26,10 +26,10 @@
 </style>
 </head>
 <body>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=iniciar&" target="body">ifwan iniciar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=parar&" target="body">ifwan parar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=estado&" target="body">ifwan estado</a></h4>
-<h4><a href="/cgi-bin/configura-ifwan.cgi" target="body">ifwan configuracion</a></h4>
+<h4><a href="/cgi-bin/ifwan.cgi?comand=iniciar&" target="body">Ifwan Iniciar</a></h4>
+<h4><a href="/cgi-bin/ifwan.cgi?comand=parar&" target="body">Ifwan Parar</a></h4>
+<h4><a href="/cgi-bin/ifwan.cgi?comand=estado&" target="body">Ifwan estado</a></h4>
+<h4><a href="/cgi-bin/configura-ifwan.cgi" target="body">Ifwan Configuracion</a></h4>
 </body>
 </html>
 

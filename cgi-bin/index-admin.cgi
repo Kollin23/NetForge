@@ -55,7 +55,7 @@ window.top.frames['body'].location.href='/cgi-bin/enrutar.cgi?comand=estado&';
     <td>
       <!-- Botons esquerra -->
       <button onclick="wan()">WAN</button>
-      <button onclick="enrutar()">ENRUTAR</button>    
+      <button onclick="enrutar()">Enrutar</button>    
   </tr>
 </table>
 
