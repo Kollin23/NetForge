@@ -1,14 +1,11 @@
 #!/bin/bash
 
+
+
 /bin/cat << EOM
 
 <html>
 <head>
-
-EOM
-echo '<title>Administracio de '$HOSTNAME'</title>'
-/bin/cat << EOM
-
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
 <meta content="MSHTML 6.00.2900.3660" name=GENERATOR> 
 
@@ -29,19 +26,14 @@ echo '<title>Administracio de '$HOSTNAME'</title>'
 .Estilo2 {color: #000000}
 -->
 </style>
-</head> 
-<frameset rows="18%,82%" frameborder="1">
-<frame src="/cgi-bin/index-admin.cgi" name="menu-general" noresize="noresize">
-<frameset cols="20%,80%">
-<frame src="/cgi-bin/cos-admin.cgi" name="menu" noresize="noresize">
-<frame src="/cgi-bin/info.cgi" name="body" noresize="noresize">
-</frameset>
-</frameset>
-<noframes>
-<body>Tu browser no soporta frames!</body>
-</noframes>
-
+</head>
+<body>
+<h4><a href="/cgi-bin/enrutar.cgi?comand=iniciar&" target="body">enrutar iniciar</a></h4>
+<h4><a href="/cgi-bin/enrutar.cgi?comand=aturar&" target="body">enrutar aturar</a></h4>
+<h4><a href="/cgi-bin/enrutar.cgi?comand=estat&" target="body">enrutar estat</a></h4>
+</body>
 </html>
 
 EOM
+
 
