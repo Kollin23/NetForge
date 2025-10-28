@@ -1,13 +1,13 @@
 #!/bin/bash
 
-source /usr/local/JSBach/conf/variables.txt
+source /usr/local/NetForge/conf/variables.conf
 
 echo "Content-Type:text/html;charset=utf-8"
 /bin/cat << EOM
 
 <html>
 <head>
-<title>Administrant el Router</title>
+<title>Administrando el Router</title>
 <meta http-equiv=Content-Type content="text/html; charset=windows-1252">
 <meta content="MSHTML 6.00.2900.3660" name=GENERATOR>
 
@@ -36,17 +36,17 @@ th {
 
 
 EOM
-echo "<h1 align="center">Administrant el Router "$HOSTNAME" amb "$PROMPT"</h1>"
+echo "<h1 align="center">Administrando el Router "$HOSTNAME" con "$PROMPT"</h1>"
 /bin/cat << EOM
 
 <script>
 function wan(){
 window.top.frames['menu'].location.href='/cgi-bin/menu-ifwan.cgi';
-window.top.frames['body'].location.href='/cgi-bin/ifwan.cgi?comand=estat&';
+window.top.frames['body'].location.href='/cgi-bin/ifwan.cgi?comand=estado&';
 }
 function enrutar(){
 window.top.frames['menu'].location.href='/cgi-bin/menu-enrutar.cgi';
-window.top.frames['body'].location.href='/cgi-bin/enrutar.cgi?comand=estat&';
+window.top.frames['body'].location.href='/cgi-bin/enrutar.cgi?comand=estado&';
 }
 </script>
 

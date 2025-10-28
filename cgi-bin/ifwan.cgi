@@ -6,7 +6,7 @@ echo ""
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Hola món CGI</title>
+  <title>Hola mundo CGI</title>
 </head>
 <body>
 EOM
@@ -14,7 +14,7 @@ EOM
 comand=$(echo "$QUERY_STRING" | sed -n 's/^.*comand=\([^&]*\).*$/\1/p')
 
 
-echo "$(/usr/local/JSBach/scripts/client_srv_cli ifwan $comand) <br>"
+echo "$(/usr/local/NetForge/scripts/client_srv_cli ifwan $comand) <br>"
 
 
 /bin/cat << EOM

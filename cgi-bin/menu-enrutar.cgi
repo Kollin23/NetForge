@@ -29,8 +29,8 @@
 </head>
 <body>
 <h4><a href="/cgi-bin/enrutar.cgi?comand=iniciar&" target="body">enrutar iniciar</a></h4>
-<h4><a href="/cgi-bin/enrutar.cgi?comand=aturar&" target="body">enrutar aturar</a></h4>
-<h4><a href="/cgi-bin/enrutar.cgi?comand=estat&" target="body">enrutar estat</a></h4>
+<h4><a href="/cgi-bin/enrutar.cgi?comand=parar&" target="body">enrutar parar</a></h4>
+<h4><a href="/cgi-bin/enrutar.cgi?comand=estado&" target="body">enrutar estado</a></h4>
 </body>
 </html>
 
