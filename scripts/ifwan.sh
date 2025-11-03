@@ -16,15 +16,15 @@ fn_iniciar() {
     dhcpcd $IFWAN
     ;;
   "manual")
-    ip a a $IP/$MASK dev $IFWAN
+    ip a a $IFW_IP/$IFW_MASK dev $IFWAN
     ip l s dev $IFWAN up
     ip r a default via $PE
     if grep -q "#DNS=" /etc/systemd/resolved.conf; then
       sed -i 's/#DNS=/DNS='"$S_DNS"'/g' /etc/systemd/resolved.conf
     fi
 
-    if ! grep -q "DNS=$S_DNS" /etc/systemd/resolved.conf; then
-      sed -i 's/^DNS=.*/DNS='"$S_DNS"'/g' /etc/systemd/resolved.conf
+    if ! grep -q "DNS=$IFW_S_DNS" /etc/systemd/resolved.conf; then
+      sed -i 's/^DNS=.*/DNS='"$IFW_S_DNS"'/g' /etc/systemd/resolved.conf
     fi
     systemctl restart systemd-resolved
     ;; 
@@ -44,7 +44,7 @@ fn_parar() {
     dhcpcd -k $IFWAN
     ;;
   "manual")
-    ip a d $IP/$MASK dev $IFWAN
+    ip a d $IFW_IP/$IFW_MASK dev $IFWAN
     ip l s dev $IFWAN down
     ;; 
   *)
@@ -60,10 +60,10 @@ fn_configurar() {
   (
     echo MODE=$1
     echo IFWAN=$2
-    echo IP=$(echo $3 | cut -d'/' -f1)
-    echo MASK=$(echo $3 | cut -d'/' -f2)
-    echo PE=$4
-    echo S_DNS=$5
+    echo IFW_IP=$(echo $3 | cut -d'/' -f1)
+    echo IFW_MASK=$(echo $3 | cut -d'/' -f2)
+    echo IFW_PE=$4
+    echo IFW_S_DNS=$5
   ) > /usr/local/NetForge/conf/ifwan.conf
   echo "Configuración guardada y tarjeta parada"
 }

@@ -41,11 +41,11 @@ echo "<h1 align="center">Administrando el Router "$HOSTNAME" con "$PROMPT"</h1>"
 
 <script>
 function wan(){
-window.top.frames['menu'].location.href='/cgi-bin/menu-ifwan.cgi';
+window.top.frames['menu'].location.href='/cgi-bin/ifwan-menu.cgi';
 window.top.frames['body'].location.href='/cgi-bin/ifwan.cgi?comand=estado&';
 }
 function enrutar(){
-window.top.frames['menu'].location.href='/cgi-bin/menu-enrutar.cgi';
+window.top.frames['menu'].location.href='/cgi-bin/enrutar-menu.cgi';
 window.top.frames['body'].location.href='/cgi-bin/enrutar.cgi?comand=estado&';
 }
 </script>

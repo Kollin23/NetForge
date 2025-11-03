@@ -29,17 +29,10 @@ source /usr/local/JSBach/conf/variables.conf
 </style>
 </head>
 <body>
-<<<<<<< HEAD:cgi-bin/ifwan-menu.cgi
-<h4><a href="/cgi-bin/ifwan.cgi?comand=iniciar&" target="body">ifwan iniciar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=aturar&" target="body">ifwan aturar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=estat&" target="body">ifwan estat</a></h4>
-<h4><a href="/cgi-bin/ifwan-configurar.cgi" target="body">ifwan configuracio</a></h4>
-=======
 <h4><a href="/cgi-bin/ifwan.cgi?comand=iniciar&" target="body">Ifwan Iniciar</a></h4>
 <h4><a href="/cgi-bin/ifwan.cgi?comand=parar&" target="body">Ifwan Parar</a></h4>
 <h4><a href="/cgi-bin/ifwan.cgi?comand=estado&" target="body">Ifwan estado</a></h4>
-<h4><a href="/cgi-bin/configura-ifwan.cgi" target="body">Ifwan Configuracion</a></h4>
->>>>>>> origin/main:cgi-bin/menu-ifwan.cgi
+<h4><a href="/cgi-bin/ifwan-configurar.cgi" target="body">Ifwan Configuracion</a></h4>
 </body>
 </html>
 
