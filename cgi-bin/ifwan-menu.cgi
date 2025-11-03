@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+source /usr/local/JSBach/conf/variables.conf
+
 /bin/cat << EOM
 
 <html>
@@ -27,12 +30,11 @@
 </head>
 <body>
 <h4><a href="/cgi-bin/ifwan.cgi?comand=iniciar&" target="body">ifwan iniciar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=parar&" target="body">ifwan parar</a></h4>
-<h4><a href="/cgi-bin/ifwan.cgi?comand=estado&" target="body">ifwan estado</a></h4>
-<h4><a href="/cgi-bin/configura-ifwan.cgi" target="body">ifwan configuracion</a></h4>
+<h4><a href="/cgi-bin/ifwan.cgi?comand=aturar&" target="body">ifwan aturar</a></h4>
+<h4><a href="/cgi-bin/ifwan.cgi?comand=estat&" target="body">ifwan estat</a></h4>
+<h4><a href="/cgi-bin/ifwan-configurar.cgi" target="body">ifwan configuracio</a></h4>
 </body>
 </html>
 
 EOM
-
 
