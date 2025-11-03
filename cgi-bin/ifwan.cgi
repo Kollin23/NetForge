@@ -14,7 +14,11 @@ EOM
 comand=$(echo "$QUERY_STRING" | sed -n 's/^.*comand=\([^&]*\).*$/\1/p')
 
 
+<<<<<<< HEAD
 echo "$(/usr/local/NetForge/scripts/client_srv_cli.sh ifwan $comand) <br>"
+=======
+echo "$(/usr/local/NetForge/scripts/client_srv_cli ifwan.sh $comand) <br>"
+>>>>>>> origin/main
 
 
 /bin/cat << EOM
